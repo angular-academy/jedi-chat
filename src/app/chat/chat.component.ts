@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ChatMessage} from './chat-message/chat-message';
 import {User} from './user';
+import { ChatlistService } from './chatlist.service';
 
 const BOT: User = {
   id: -1,
@@ -26,17 +27,22 @@ export class ChatComponent implements OnInit {
   private _currentId = 0;
   public messages: ChatMessage[];
 
+  constructor(public chatlistService: ChatlistService) {
+
+  }
 
   public ngOnInit(): void {
     this.initMocks();
   }
 
   public sendAsUser(message: string) {
-    this.messages.push(this.messageFrom(message));
+    // this.messages.push(this.messageFrom(message));
+    this.chatlistService.add(this.messageFrom(message) );
   }
 
   public sendAsGrievous(message: string) {
-    this.messages.push(this.messageFrom(message, GENERAL_GRIEVOUS, 'left'));
+    // this.messages.push(this.messageFrom(message, GENERAL_GRIEVOUS, 'left'));
+    this.chatlistService.add( this.messageFrom(message, GENERAL_GRIEVOUS, 'left') );
   }
 
   private getIncreasedId(): number {
@@ -49,7 +55,8 @@ export class ChatComponent implements OnInit {
       user: user,
       content: text,
       position: position,
-      alert: 'default'
+      alert: 'default',
+      created: new Date()
     };
   }
 
@@ -62,5 +69,7 @@ export class ChatComponent implements OnInit {
       this.messageFrom('Hello There...'),
       this.messageFrom('General Kenobi.', GENERAL_GRIEVOUS, 'left')
     ];
+
+    this.messages.forEach( x => this.chatlistService.add( x ));
   }
 }
