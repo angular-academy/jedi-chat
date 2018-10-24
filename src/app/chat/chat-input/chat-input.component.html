@@ -1,0 +1,2 @@
+<input [(ngModel)]="currentMessageText" type="text" (keyup.enter)="sendMessage()" (keyup.esc)="sendReplyAsGrievous()">
+<button (click)="sendMessage()" (contextmenu)="rightClickDemoAsGrievous($event)">Send</button>

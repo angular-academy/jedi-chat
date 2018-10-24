@@ -1,0 +1,13 @@
+<div class="chat-message-content">
+  {{message?.content}}
+</div>
+
+<div class="chat-message-user">
+              <span *ngIf="message?.content?.toLocaleLowerCase() === 'i am the senate'; else user">
+                Emperor Palpatine
+              </span>
+
+  <ng-template #user>
+    {{message?.user?.name}}
+  </ng-template>
+</div>
