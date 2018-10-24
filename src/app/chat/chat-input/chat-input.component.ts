@@ -1,4 +1,5 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import { ChatlistService } from '../chatlist.service';
 
 @Component({
   selector: 'jc-chat-input',
@@ -14,6 +15,7 @@ export class ChatInputComponent implements OnInit {
   }
 
   ngOnInit() {
+
   }
 
   public sendMessage(): void {

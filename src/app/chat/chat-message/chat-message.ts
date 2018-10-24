@@ -6,4 +6,5 @@ export interface ChatMessage {
   position: 'default' | 'left' | 'right' | 'center';
   alert: 'default' | 'info' | 'warn';
   user: User;
+  created: Date;
 }
