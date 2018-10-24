@@ -1,0 +1,34 @@
+<div class="chat">
+  <header>
+    <h1>Most Epic Jedi Chat</h1>
+  </header>
+  <main>
+    <div class="chat-message-list">
+
+      <div *ngFor="let message of messages" [ngClass]="['chat-message', message.position, 'alert-' + message.alert]">
+        <div class="chat-message-content">
+          {{message.content}}
+        </div>
+
+        <div class="chat-message-user">
+              <span *ngIf="message?.content?.toLocaleLowerCase() === 'i am the senate'; else user">
+                Emperor Palpatine
+              </span>
+
+          <ng-template #user>
+            {{message.user.name}}
+          </ng-template>
+        </div>
+      </div>
+
+    </div>
+    <div class="chat-message-input">
+      <input [(ngModel)]="currentMessageText" type="text" (keyup.enter)="sendMessage()" (keyup.esc)="sendReplyAsGrievous()">
+      <button (click)="sendMessage()" (contextmenu)="rightClickDemoAsGrievous($event)">Send</button>
+    </div>
+  </main>
+  <footer>
+    &copy; by me
+  </footer>
+
+</div>
