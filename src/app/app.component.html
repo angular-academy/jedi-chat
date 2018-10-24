@@ -1,9 +1,9 @@
-<header>
-  <h1>Most Epic Jedi Chat</h1>
-</header>
-<main>
-  <jc-chat class="chat"></jc-chat>
-</main>
-<footer>
-  &copy; by me
-</footer>
+<p>Heute ist der {{ datum | date:"longDate" | uppercase }}.</p>
+<p>Es ist {{ datum | date:"H:mm:ss"}} Uhr!</p>
+<p>Der Preis ist {{price | currency:"EUR"}}.</p>
+<p>Zahl mit drei Vorkommastellen und maximal 5. Nachkommastellen: {{ pi | number:"3.0-5"}}</p>
+<p>{{array | json }}</p>
+<p>{{obj | json }}</p>
+<p>{{money}}</p>
+<p>{{name | initials:"."}}</p>
+<p *ngFor="let person of people">{{person.name}}</p>
