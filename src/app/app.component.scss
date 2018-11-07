@@ -1,0 +1,20 @@
+:host {
+  nav {
+    width: 100%;
+    max-width: 640px;
+    margin: 2em auto 0 auto;
+    border: 1px solid cadetblue;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 14px;
+    padding: 1em;
+    a {
+      text-decoration-line: underline;
+      color: black;
+      padding-right: 10px;
+      &.active {
+        text-decoration-line: none;
+      }
+    }
+  }
+
+}

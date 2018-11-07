@@ -1,0 +1,19 @@
+<header>
+  Attribute Directive Example
+</header>
+
+<!--
+<section>
+    <p appHighlight>I am a paragraph</p>
+</section>
+-->
+
+<section>
+  <p [appHighlight]="'blue'">I am a paragraph</p>
+  <p [appHighlight]="'red'">I am another paragraph</p>
+  <p [appHighlight]="'cyan'">I am a paragraph</p>
+</section>
+
+<section>
+  <p [appBlink]="['cyan', 'lime', 'yellow']">I am a paragraph</p>
+</section>
