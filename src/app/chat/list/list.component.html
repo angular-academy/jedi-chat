@@ -1,0 +1,2 @@
+<jc-chat-item *ngFor="let item of items; let i = index" [item]="item"
+              [class]="item.author === userStore.user ? 'align-right' : ''"></jc-chat-item>

@@ -1,0 +1,5 @@
+<jc-header title="Jedi Chat">
+  <a *ngFor="let location of locations" [routerLink]="location.path" routerLinkActive="active">{{location.text}}</a>
+</jc-header>
+<jc-chat-list [items]="itemStore.items"></jc-chat-list>
+<jc-chat-input [author]="userStore.user" (sendItem)="itemStore.addItem($event)"></jc-chat-input>

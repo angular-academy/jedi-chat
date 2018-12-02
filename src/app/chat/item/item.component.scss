@@ -1,0 +1,62 @@
+@import "../../../styles";
+
+:host {
+  display: flex;
+  border: 1px solid $primary-color;
+  border-radius: 10px;
+  margin: 5px 0 5px 0;
+  width: 80%;
+  max-width: 1000px;
+
+  .avatar {
+    height: 100px;
+    border-radius: 10px 0 0 10px;
+    width: auto;
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    padding: 5px 0 5px 0;
+
+    .nickname {
+      font-weight: bold;
+      margin: 0 16px 0 16px;
+    }
+
+    .message {
+      margin: 0 16px 0 16px;
+    }
+
+    .date {
+      margin: 0 16px 0 16px;
+      text-align: right;
+      justify-self: flex-end;
+    }
+  }
+
+  &.align-right {
+    flex-direction: row-reverse;
+    margin-left: 20%;
+    .avatar {
+      border-radius: 0 10px 10px 0;
+    }
+
+    .content {
+      .nickname {
+        text-align: right;
+      }
+
+      .message {
+        text-align: right;
+        word-wrap: normal;
+      }
+
+      .date {
+        text-align: left;
+      }
+    }
+  }
+}

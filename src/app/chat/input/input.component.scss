@@ -1,0 +1,43 @@
+@import '../../../styles';
+
+:host {
+  display: flex;
+  align-items: flex-end;
+  flex: 1;
+  justify-content: center;
+  width: 100%;
+  .container {
+    display: flex;
+    border: 1px solid $primary-color;
+    border-radius: 10px;
+
+    width: inherit;
+    margin: 16px;
+
+    input {
+      margin: 4px;
+      flex: 1;
+      outline: none;
+      background-color: transparent;
+      color: $primary-color;
+      border: none;
+      &::placeholder {
+        color: transparentize($primary-color, 0.5) ;
+      }
+    }
+    button {
+      color: $primary-color;
+      outline: none;
+      background: none;
+      border: 0px solid $primary-color;
+      border-radius: 0 10px 10px 0;
+      box-shadow: 0px 0px 0px 1px $primary-color;
+      &:hover {
+        background-color: transparentize($primary-color, 0.8);
+      }
+      &:active {
+        background-color: transparentize($primary-color, 0.6);
+      }
+    }
+  }
+}

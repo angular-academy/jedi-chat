@@ -1,1 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
+
+$primary-color: #FFE300;
+$secondary-color: black;
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+body {
+  color: $primary-color;
+  background-image: url("/assets/stars.jpeg");
+}
