@@ -2,6 +2,12 @@
   <a *ngFor="let location of locations | async" [routerLink]="location.path"
      routerLinkActive="active">{{location.text}}</a>
 </jc-header>
+
+<div *ngIf="user.avatar">
+  <h2>So zeigt ihr ein Base64 Bild an</h2>
+  <img alt="Avatar" [src]="'data:image/png;base64,' + user.avatar" />
+</div>
+
 <form (ngSubmit)="onSubmit(profileForm)" (reset)="onReset($event)" #profileForm="ngForm" class="profile-form" autocomplete="off">
   <div class="form-group">
     <label for="nickname">Nickname</label>
@@ -15,15 +21,6 @@
         Nickname is required
       </div>
     </div>
-  </div>
-  <div class="form-group">
-    TODO: Password
-  </div>
-  <div class="form-group">
-    TODO: Matching Password
-  </div>
-  <div class="form-group">
-    TODO: Bio
   </div>
   <div class="form-group">
     <label for="gender">Gender</label>
@@ -49,14 +46,18 @@
   </div>
   <div class="form-group">
     <label for="avatar">Avatar</label>
-    <div class="container">
-      <input type="text" class="form-control" id="avatar"
-             [(ngModel)]="user.avatar" name="avatar"
-             #avatar="ngModel">
-      <div [hidden]="avatar.valid || avatar.pristine"
-           class="alert alert-danger">
-      </div>
+    <div class="upload">
+      <input type="file" id="avatar" name="avatar" accept="image/png, image/jpg" (change)="onFileUpload($event)">
     </div>
+  </div>
+  <div class="form-group">
+    TODO: Password
+  </div>
+  <div class="form-group">
+    TODO: Matching Password
+  </div>
+  <div class="form-group">
+    TODO: Bio
   </div>
   <div class="form-group">
     TODO: Species
@@ -69,5 +70,4 @@
     <button type="reset">Reset</button>
     <button type="submit">Save</button>
   </div>
-
 </form>

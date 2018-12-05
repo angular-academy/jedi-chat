@@ -4,6 +4,8 @@ import {Observable} from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import {map} from 'rxjs/operators';
 import { NgForm } from '@angular/forms';
+import {__await} from "tslib";
+import {fileUploadToBase64} from "../shared/util/file-handling";
 
 type Locations = { text: string, path: string }[];
 
@@ -32,8 +34,12 @@ export class ProfileComponent implements OnInit {
   }
 
   onReset(event: Event): void {
-    console.log(event);
     //TODO: do something here ??
     alert('Do something here ??');
+  }
+
+  async onFileUpload(event): Promise<void> {
+    this.user.avatar = await fileUploadToBase64(event);
+    console.log(this.user.avatar);
   }
 }
