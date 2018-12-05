@@ -1,0 +1,53 @@
+@import '../../styles';
+
+.profile-form {
+  padding: 20px;
+  margin: 0 auto;
+  max-width: 800px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+  label {
+    margin-left: 10px;
+  }
+}
+
+.container {
+  border: 1px solid $primary-color;
+  border-radius: 10px;
+  display: flex;
+  input {
+    width: 100%;
+    padding: 1px 10px 0 10px;
+    color: $primary-color;
+    border: none;
+    margin: 4px;
+    flex: 1;
+    outline: none;
+    background-color: transparent;
+    &::placeholder {
+      color: transparentize($primary-color, 0.5) ;
+    }
+  }
+
+  .alert {
+    padding: 3px 10px 0 5px;
+    border-left: 1px solid $primary-color;
+  }
+}
+
+button {
+  color: $primary-color;
+  outline: none;
+  background: none;
+  border: 0 solid $primary-color;
+  border-radius: 0 10px 10px 0;
+  box-shadow: 0 0 0 1px $primary-color;
+  &:hover {
+    background-color: transparentize($primary-color, 0.8);
+  }
+  &:active {
+    background-color: transparentize($primary-color, 0.6);
+  }
+}

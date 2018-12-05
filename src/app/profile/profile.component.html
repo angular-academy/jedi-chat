@@ -1,63 +1,76 @@
 <jc-header title="Jedi Chat">
-  <a *ngFor="let location of locations" [routerLink]="location.path" routerLinkActive="active">{{location.text}}</a>
+  <a *ngFor="let location of locations | async" [routerLink]="location.path" routerLinkActive="active">{{location.text}}</a>
 </jc-header>
-<form (ngSubmit)="onSubmit(profileForm)" #profileForm="ngForm">
+<form (ngSubmit)="onSubmit(profileForm)" #profileForm="ngForm" class="profile-form" autocomplete="off">
   <div class="form-group">
     <label for="nickname">Nickname</label>
-    <input type="text" class="form-control" id="nickname"
-           required
-           [(ngModel)]="user.nickname" name="nickname"
-           #nickname="ngModel">
-    <div [hidden]="nickname.valid || nickname.pristine"
-         class="alert alert-danger">
-      Nickname is required
+    <div class="container">
+      <input type="text" class="form-control" id="nickname"
+             required
+             [(ngModel)]="user.nickname" name="nickname"
+             #nickname="ngModel">
+      <div [hidden]="nickname.valid || nickname.pristine"
+           class="alert alert-danger">
+        Nickname is required
+      </div>
     </div>
   </div>
   <div class="form-group">
     <label for="bio">Bio</label>
-    <input type="text" class="form-control" id="bio"
-           [(ngModel)]="user.bio" name="bio"
-           #bio="ngModel">
-    <div [hidden]="bio.valid || bio.pristine"
-         class="alert alert-danger">
+    <div class="container">
+      <input type="text" class="form-control" id="bio"
+             [(ngModel)]="user.bio" name="bio"
+             #bio="ngModel">
+      <div [hidden]="bio.valid || bio.pristine"
+           class="alert alert-danger">
+      </div>
     </div>
   </div>
   <div class="form-group">
     <label for="gender">Gender</label>
-    <input type="text" class="form-control" id="gender"
-           required
-           [(ngModel)]="user.gender" name="gender"
-           #gender="ngModel">
-    <div [hidden]="gender.valid || gender.pristine"
-         class="alert alert-danger">
-      Gender is required
+    <div class="container">
+
+      <input type="text" class="form-control" id="gender"
+             required
+             [(ngModel)]="user.gender" name="gender"
+             #gender="ngModel">
+      <div [hidden]="gender.valid || gender.pristine"
+           class="alert alert-danger">
+        Gender is required
+      </div>
     </div>
   </div>
   <div class="form-group">
     <label for="avatar">Avatar</label>
-    <input type="text" class="form-control" id="avatar"
-           [(ngModel)]="user.avatar" name="avatar"
-           #avatar="ngModel">
-    <div [hidden]="avatar.valid || avatar.pristine"
-         class="alert alert-danger">
+    <div class="container">
+      <input type="text" class="form-control" id="avatar"
+             [(ngModel)]="user.avatar" name="avatar"
+             #avatar="ngModel">
+      <div [hidden]="avatar.valid || avatar.pristine"
+           class="alert alert-danger">
+      </div>
     </div>
   </div>
   <div class="form-group">
     <label for="species">Species</label>
-    <input type="text" class="form-control" id="species"
-           [(ngModel)]="user.species" name="species"
-           #species="ngModel">
-    <div [hidden]="species.valid || species.pristine"
-         class="alert alert-danger">
+    <div class="container">
+      <input type="text" class="form-control" id="species"
+             [(ngModel)]="user.species" name="species"
+             #species="ngModel">
+      <div [hidden]="species.valid || species.pristine"
+           class="alert alert-danger">
+      </div>
     </div>
   </div>
   <div class="form-group">
     <label for="fraction">Fraction</label>
-    <input type="text" class="form-control" id="fraction"
-           [(ngModel)]="user.fraction" name="fraction"
-           #fraction="ngModel">
-    <div [hidden]="fraction.valid || fraction.pristine"
-         class="alert alert-danger">
+    <div class="container">
+      <input type="text" class="form-control" id="fraction"
+             [(ngModel)]="user.fraction" name="fraction"
+             #fraction="ngModel">
+      <div [hidden]="fraction.valid || fraction.pristine"
+           class="alert alert-danger">
+      </div>
     </div>
   </div>
   <button type="submit">Save</button>

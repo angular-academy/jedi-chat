@@ -1,39 +1,33 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { User } from '../shared/models/user.model';
-import { DEMO_USERS } from '../../mock-data';
-import { Subject } from 'rxjs';
-import { ItemStoreService } from '../chat/item-store.service';
+import {Observable} from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
-import { takeUntil } from 'rxjs/operators';
-import { UserStoreService } from '../core/user-store.service';
+import {map} from 'rxjs/operators';
 import { NgForm } from '@angular/forms';
+
+type Locations = { text: string, path: string }[];
 
 @Component({
   selector: 'jc-profile',
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.scss']
 })
-export class ProfileComponent implements OnInit, OnDestroy {
+export class ProfileComponent implements OnInit {
   user: User;
-  locations: { text: string, path: string }[] = [];
-  destroy$ = new Subject<void>();
+  locations: Observable<Locations>;
 
-  constructor(public route: ActivatedRoute, private userStore: UserStoreService) {
+  constructor(public route: ActivatedRoute) {
   }
 
   ngOnInit() {
-    this.user = {...this.userStore.user};
-    this.route.data.pipe(takeUntil(this.destroy$)).subscribe(data => {
-      this.locations = data.locations || [];
-    });
+    //TODO: use me for something
+    this.user = {avatar: '', bio: '', fraction: '', gender: 'MALE', nickname: '', species: ''};
+    this.locations = this.route.data.pipe(map(data => data.locations || []));
   }
 
-  ngOnDestroy(): void {
-    this.destroy$.next();
-  }
 
   onSubmit(form: NgForm) {
-    this.userStore.user = {...this.user};
-    this.user = {...this.userStore.user};
+    //TODO: do something here
+    alert('Do something here!');
   }
 }
