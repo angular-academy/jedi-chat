@@ -1,7 +1,8 @@
 <jc-header title="Jedi Chat">
-  <a *ngFor="let location of locations | async" [routerLink]="location.path" routerLinkActive="active">{{location.text}}</a>
+  <a *ngFor="let location of locations | async" [routerLink]="location.path"
+     routerLinkActive="active">{{location.text}}</a>
 </jc-header>
-<form (ngSubmit)="onSubmit(profileForm)" #profileForm="ngForm" class="profile-form" autocomplete="off">
+<form (ngSubmit)="onSubmit(profileForm)" (reset)="onReset($event)" #profileForm="ngForm" class="profile-form" autocomplete="off">
   <div class="form-group">
     <label for="nickname">Nickname</label>
     <div class="container">
@@ -28,12 +29,20 @@
   </div>
   <div class="form-group">
     <label for="gender">Gender</label>
-    <div class="container">
+    <div class="container radio-buttons" id="gender">
 
-      <input type="text" class="form-control" id="gender"
-             required
-             [(ngModel)]="user.gender" name="gender"
-             #gender="ngModel">
+      <label for="female" class="radio-btn">
+        <input type="radio" id="female" name="gender" required [(ngModel)]="user.gender" #gender="ngModel" value="FEMALE">
+        <span class="checked"></span>
+        Female
+      </label>
+
+      <label for="male" class="radio-btn">
+        <input type="radio" id="male" name="gender" required [(ngModel)]="user.gender" #gender="ngModel" value="MALE">
+        <span class="checked"></span>
+        Male
+      </label>
+
       <div [hidden]="gender.valid || gender.pristine"
            class="alert alert-danger">
         Gender is required
@@ -73,5 +82,10 @@
       </div>
     </div>
   </div>
-  <button type="submit">Save</button>
+
+  <div class="form-buttons">
+    <button type="reset">Reset</button>
+    <button type="submit">Save</button>
+  </div>
+
 </form>

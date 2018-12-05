@@ -17,6 +17,55 @@
   border: 1px solid $primary-color;
   border-radius: 10px;
   display: flex;
+
+  &.radio-buttons {
+    border: none;
+    flex-direction: column;
+    padding: 15px;
+
+    .radio-btn {
+      cursor: pointer;
+      position: relative;
+      &:not(:first-child) {
+        margin-top: 15px;
+      }
+      margin-left: 20px;
+
+      &:before {
+        content: '';
+        border: 1px solid $primary-color;
+        border-radius: 50%;
+        display: block;
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        left: -20px;
+        top: 3px;
+      }
+
+      .checked {
+        display: none;
+        height: 6px;
+        width: 6px;
+        background: $primary-color;
+        position: absolute;
+        left: -17px;
+        top: 6px;
+        border-radius: 50%;
+      }
+
+      input[type=radio] {
+        display: none;
+
+        &:checked {
+          ~.checked {
+            display: block;
+          }
+        }
+      }
+    }
+  }
+
   input {
     width: 100%;
     padding: 1px 10px 0 10px;
@@ -37,12 +86,18 @@
   }
 }
 
+.form-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
 button {
+  cursor: pointer;
   color: $primary-color;
   outline: none;
   background: none;
   border: 0 solid $primary-color;
-  border-radius: 0 10px 10px 0;
+  border-radius: 10px;
   box-shadow: 0 0 0 1px $primary-color;
   &:hover {
     background-color: transparentize($primary-color, 0.8);

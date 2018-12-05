@@ -30,4 +30,10 @@ export class ProfileComponent implements OnInit {
     //TODO: do something here
     alert('Do something here!');
   }
+
+  onReset(event: Event): void {
+    console.log(event);
+    //TODO: do something here ??
+    alert('Do something here ??');
+  }
 }
