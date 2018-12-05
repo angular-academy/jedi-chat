@@ -3,10 +3,15 @@ type Fraction = 'GALACTIC_EMPIRE' | 'REBEL_ALLIANCE' | 'GALACTIC_REPUBLIC' | 'CO
 type Gender = 'MALE' | 'FEMALE';
 
 export interface User {
-  nickname: string;
+  nickName: string;
   avatar: string;
   bio: string;
   gender: Gender;
   species: Species;
   fraction: Fraction;
+}
+
+export interface CreateUser extends User {
+  password: string;
+  matchingPassword: string;
 }

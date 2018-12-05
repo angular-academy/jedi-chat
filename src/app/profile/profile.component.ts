@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from '../shared/models/user.model';
+import {CreateUser, User} from '../shared/models/user.model';
 import {Observable} from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import {map} from 'rxjs/operators';
@@ -13,7 +13,7 @@ type Locations = { text: string, path: string }[];
   styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent implements OnInit {
-  user: User;
+  user: CreateUser;
   locations: Observable<Locations>;
 
   constructor(public route: ActivatedRoute) {
@@ -21,7 +21,7 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit() {
     //TODO: use me for something
-    this.user = {avatar: '', bio: '', fraction: '', gender: 'MALE', nickname: '', species: ''};
+    this.user = {avatar: '', bio: '', fraction: 'GALACTIC_EMPIRE', gender: 'MALE', nickName: '', species: 'HUMAN', matchingPassword: '', password: ''};
     this.locations = this.route.data.pipe(map(data => data.locations || []));
   }
 

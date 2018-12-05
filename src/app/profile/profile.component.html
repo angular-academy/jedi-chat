@@ -8,7 +8,7 @@
     <div class="container">
       <input type="text" class="form-control" id="nickname"
              required
-             [(ngModel)]="user.nickname" name="nickname"
+             [(ngModel)]="user.nickName" name="nickname"
              #nickname="ngModel">
       <div [hidden]="nickname.valid || nickname.pristine"
            class="alert alert-danger">
@@ -17,15 +17,13 @@
     </div>
   </div>
   <div class="form-group">
-    <label for="bio">Bio</label>
-    <div class="container">
-      <input type="text" class="form-control" id="bio"
-             [(ngModel)]="user.bio" name="bio"
-             #bio="ngModel">
-      <div [hidden]="bio.valid || bio.pristine"
-           class="alert alert-danger">
-      </div>
-    </div>
+    TODO: Password
+  </div>
+  <div class="form-group">
+    TODO: Matching Password
+  </div>
+  <div class="form-group">
+    TODO: Bio
   </div>
   <div class="form-group">
     <label for="gender">Gender</label>
@@ -61,26 +59,10 @@
     </div>
   </div>
   <div class="form-group">
-    <label for="species">Species</label>
-    <div class="container">
-      <input type="text" class="form-control" id="species"
-             [(ngModel)]="user.species" name="species"
-             #species="ngModel">
-      <div [hidden]="species.valid || species.pristine"
-           class="alert alert-danger">
-      </div>
-    </div>
+    TODO: Species
   </div>
   <div class="form-group">
-    <label for="fraction">Fraction</label>
-    <div class="container">
-      <input type="text" class="form-control" id="fraction"
-             [(ngModel)]="user.fraction" name="fraction"
-             #fraction="ngModel">
-      <div [hidden]="fraction.valid || fraction.pristine"
-           class="alert alert-danger">
-      </div>
-    </div>
+    TODO: Fraction
   </div>
 
   <div class="form-buttons">

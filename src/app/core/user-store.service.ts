@@ -4,5 +4,5 @@ import { DEMO_USERS } from '../../mock-data';
 
 @Injectable()
 export class UserStoreService {
-  user: User = { nickname: 'Guest', avatar: '/assets/placeholder_avatar.jpg', fraction: '', species: '', gender: 'DIVERSE', bio: '' };
+  user: User = { nickName: 'Guest', avatar: '/assets/placeholder_avatar.jpg', fraction: '', species: '', gender: 'DIVERSE', bio: '' };
 }
