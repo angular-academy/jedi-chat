@@ -1,0 +1,24 @@
+<jc-header title="Jedi Chat">
+  <a *ngFor="let location of locations | async" [routerLink]="location.path"
+     routerLinkActive="active">{{location.text}}</a>
+</jc-header>
+
+<div *ngIf="user$ | async as user" class="user-profile">
+
+
+  <div *ngIf="user.avatar" class="avatar">
+    <img alt="Avatar" [src]="'data:image/png;base64,' + user.avatar"/>
+  </div>
+
+  <div class="bio">
+    <h2>{{user.nickName}}</h2>
+    <div>{{user.bio}}</div>
+  </div>
+
+
+  <div class="user-info">
+    <div>{{user.species | species}}</div>
+    <div>{{user.gender | gender}}</div>
+    <div>{{user.fraction | fraction}}</div>
+  </div>
+</div>

@@ -1,0 +1,24 @@
+.user-profile {
+  padding: 20px;
+  margin: 0 auto;
+  max-width: 800px;
+  display: flex;
+
+  .avatar {
+    display: inline-block;
+    img {
+      width: 200px;
+      height: 200px;
+      border-radius: 20%;
+    }
+  }
+
+  .bio {
+    flex-grow: 1;
+    padding: 0 20px;
+  }
+
+  .user-info {
+    margin-top: 20px;
+  }
+}

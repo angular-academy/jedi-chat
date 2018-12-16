@@ -3,11 +3,6 @@
      routerLinkActive="active">{{location.text}}</a>
 </jc-header>
 
-<div *ngIf="user.avatar">
-  <h2>So zeigt ihr ein Base64 Bild an</h2>
-  <img alt="Avatar" [src]="'data:image/png;base64,' + user.avatar" />
-</div>
-
 <form (ngSubmit)="onSubmit(profileForm)" (reset)="onReset($event)" #profileForm="ngForm" class="profile-form" autocomplete="off">
   <div class="form-group">
     <label for="nickname">Nickname</label>
@@ -22,48 +17,81 @@
       </div>
     </div>
   </div>
+
   <div class="form-group">
-    <label for="gender">Gender</label>
-    <div class="container radio-buttons" id="gender">
-
-      <label for="female" class="radio-btn">
-        <input type="radio" id="female" name="gender" required [(ngModel)]="user.gender" #gender="ngModel" value="FEMALE">
-        <span class="checked"></span>
-        Female
-      </label>
-
-      <label for="male" class="radio-btn">
-        <input type="radio" id="male" name="gender" required [(ngModel)]="user.gender" #gender="ngModel" value="MALE">
-        <span class="checked"></span>
-        Male
-      </label>
-
-      <div [hidden]="gender.valid || gender.pristine"
+    <label for="password">Password</label>
+    <div class="container">
+      <input type="password" class="form-control" id="password"
+             required
+             [(ngModel)]="user.password" name="password"
+             #pwd="ngModel">
+      <div [hidden]="pwd.valid || pwd.pristine"
            class="alert alert-danger">
-        Gender is required
+        Password is required
       </div>
     </div>
   </div>
+
+  <div class="form-group">
+    <label for="m-password">Matching Password</label>
+    <div class="container">
+      <input type="password" class="form-control" id="m-password"
+             required
+             [(ngModel)]="user.matchingPassword" name="m-password"
+             #mpwd="ngModel">
+      <div [hidden]="mpwd.valid || mpwd.pristine"
+           class="alert alert-danger">
+        Password is required
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="bio">Bio</label>
+    <div class="container">
+      <input type="text" class="form-control" id="bio"
+             [(ngModel)]="user.bio" name="bio">
+    </div>
+  </div>
+
+  <div class="form-group">
+    <jc-dropdown
+      [(value)]="user.gender"
+      [label]="'Gender'"
+      [options]="GenderDropdownOptions"
+      [id]="'gender'"
+    >
+
+    </jc-dropdown>
+  </div>
+
+  <div class="form-group">
+    <jc-dropdown
+      [(value)]="user.species"
+      [label]="'Species'"
+      [options]="SpeciesDropdownOptions"
+      [id]="'species'"
+    >
+
+    </jc-dropdown>
+  </div>
+
+  <div class="form-group">
+    <jc-dropdown
+      [(value)]="user.fraction"
+      [label]="'Fraction'"
+      [options]="FractionDropdownOptions"
+      [id]="'fraction'"
+    >
+
+    </jc-dropdown>
+  </div>
+
   <div class="form-group">
     <label for="avatar">Avatar</label>
     <div class="upload">
       <input type="file" id="avatar" name="avatar" accept="image/png, image/jpg" (change)="onFileUpload($event)">
     </div>
-  </div>
-  <div class="form-group">
-    TODO: Password
-  </div>
-  <div class="form-group">
-    TODO: Matching Password
-  </div>
-  <div class="form-group">
-    TODO: Bio
-  </div>
-  <div class="form-group">
-    TODO: Species
-  </div>
-  <div class="form-group">
-    TODO: Fraction
   </div>
 
   <div class="form-buttons">

@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import {CreateUser, User} from '../shared/models/user.model';
+import {CreateUser} from '../shared/models/user.model';
 import {Observable} from 'rxjs';
-import { ActivatedRoute } from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {map} from 'rxjs/operators';
 import { NgForm } from '@angular/forms';
-import {__await} from "tslib";
-import {fileUploadToBase64} from "../shared/util/file-handling";
+import {fileUploadToBase64} from '../shared/util/file-handling';
+import {FractionDropdownOptions, GenderDropdownOptions, SpeciesDropdownOptions} from '../shared/models/dropdown';
+import {UserStoreService} from '../core/user-store.service';
+import {HttpErrorResponse} from '@angular/common/http';
 
 type Locations = { text: string, path: string }[];
 
@@ -17,25 +19,43 @@ type Locations = { text: string, path: string }[];
 export class ProfileComponent implements OnInit {
   user: CreateUser;
   locations: Observable<Locations>;
+  GenderDropdownOptions = GenderDropdownOptions;
+  SpeciesDropdownOptions = SpeciesDropdownOptions;
+  FractionDropdownOptions = FractionDropdownOptions;
 
-  constructor(public route: ActivatedRoute) {
+  constructor(public route: ActivatedRoute,
+              private router: Router,
+              private userStore: UserStoreService) {
   }
 
   ngOnInit() {
-    //TODO: use me for something
     this.user = {avatar: '', bio: '', fraction: 'GALACTIC_EMPIRE', gender: 'MALE', nickName: '', species: 'HUMAN', matchingPassword: '', password: ''};
     this.locations = this.route.data.pipe(map(data => data.locations || []));
   }
 
 
   onSubmit(form: NgForm) {
-    //TODO: do something here
-    alert('Do something here!');
+    this.userStore.registerUser(this.user)
+      .subscribe(success => {
+        if (success) {
+          this.router.navigate(['profile', this.user.nickName]);
+        }
+      }, (err: HttpErrorResponse) => {
+        alert('backend says no :/ Status code is: ' + err.status);
+      });
   }
 
   onReset(event: Event): void {
-    //TODO: do something here ??
-    alert('Do something here ??');
+    event.preventDefault();
+    event.stopPropagation();
+    this.user.nickName = '';
+    this.user.password = '';
+    this.user.matchingPassword = '';
+    this.user.bio = '';
+    this.user.avatar = '';
+    this.user.fraction = 'GALACTIC_EMPIRE';
+    this.user.gender = 'MALE';
+    this.user.species = 'HUMAN';
   }
 
   async onFileUpload(event): Promise<void> {

@@ -1,0 +1,57 @@
+@import "../../../styles";
+
+.container {
+  border: 1px solid $primary-color;
+  border-radius: 10px;
+  display: flex;
+
+  &.radio-buttons {
+    border: none;
+    flex-direction: column;
+    padding: 15px 15px 0;
+
+    .radio-btn {
+      cursor: pointer;
+      position: relative;
+
+      &:not(:first-child) {
+        margin-top: 15px;
+      }
+
+      margin-left: 20px;
+
+      &:before {
+        content: '';
+        border: 1px solid $primary-color;
+        border-radius: 50%;
+        display: block;
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        left: -20px;
+        top: 3px;
+      }
+
+      .checked {
+        display: none;
+        height: 6px;
+        width: 6px;
+        background: $primary-color;
+        position: absolute;
+        left: -17px;
+        top: 6px;
+        border-radius: 50%;
+      }
+
+      input[type=radio] {
+        display: none;
+
+        &:checked {
+          ~ .checked {
+            display: block;
+          }
+        }
+      }
+    }
+  }
+}
