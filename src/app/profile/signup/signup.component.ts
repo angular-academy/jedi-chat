@@ -4,8 +4,9 @@ import {Observable} from 'rxjs';
 import {FractionDropdownOptions, GenderDropdownOptions, SpeciesDropdownOptions} from '../../shared/models/dropdown';
 import {map} from 'rxjs/operators';
 import {ActivatedRoute} from '@angular/router';
-import {NgForm} from '@angular/forms';
+import {FormGroup, NgForm} from '@angular/forms';
 import {HttpErrorResponse} from '@angular/common/http';
+import {SignupFormService} from '../services/signup-form.service';
 
 type Locations = { text: string, path: string }[];
 
@@ -16,14 +17,17 @@ type Locations = { text: string, path: string }[];
 })
 export class SignupComponent implements OnInit {
 
+  public form: FormGroup;
   locations: Observable<Locations>;
   GenderDropdownOptions = GenderDropdownOptions;
   SpeciesDropdownOptions = SpeciesDropdownOptions;
   FractionDropdownOptions = FractionDropdownOptions;
 
-  constructor(public route: ActivatedRoute) { }
+  constructor(public route: ActivatedRoute,
+              private _signupForm: SignupFormService) { }
 
   ngOnInit() {
+    this.form = this._signupForm.form;
     this.locations = this.route.data.pipe(map(data => data.locations || []));
   }
 

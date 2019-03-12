@@ -3,12 +3,12 @@
      routerLinkActive="active">{{location.text}}</a>
 </jc-header>
 
-<form (ngSubmit)="onSubmit()" (reset)="onReset($event)" class="profile-form" autocomplete="off">
+<form (ngSubmit)="onSubmit()" (reset)="onReset($event)" class="profile-form" autocomplete="off" [formGroup]="form">
   <div class="form-group">
     <label for="nickname">Nickname</label>
     <div class="container">
-      <input type="text" class="form-control" id="nickname">
-      <div class="alert alert-danger">
+      <input type="text" class="form-control" id="nickname" [formControl]="form.get('name')">
+      <div class="alert alert-danger" *ngIf="form.get('name').invalid && form.get('name').touched && form.get('name').dirty">
         Nickname is required
       </div>
     </div>
@@ -17,8 +17,8 @@
   <div class="form-group">
     <label for="password">Password</label>
     <div class="container">
-      <input type="password" class="form-control" id="password">
-      <div class="alert alert-danger">
+      <input type="password" class="form-control" id="password" [formControl]="form.controls['password']">
+      <div class="alert alert-danger" *ngIf="form.get('password').invalid && form.get('password').touched">
         Password is required
       </div>
     </div>
@@ -27,9 +27,9 @@
   <div class="form-group">
     <label for="m-password">Matching Password</label>
     <div class="container">
-      <input type="password" class="form-control" id="m-password">
-      <div class="alert alert-danger">
-        Password is required
+      <input type="password" class="form-control" id="m-password" [formControl]="form.get('matchingPassword')">
+      <div class="alert alert-danger" *ngIf="form.invalid">
+        {{form.errors?.blub || form.errors?.bla}}
       </div>
     </div>
   </div>
@@ -37,7 +37,7 @@
   <div class="form-group">
     <label for="bio">Bio</label>
     <div class="container">
-      <input type="text" class="form-control" id="bio">
+      <input type="text" class="form-control" id="bio" [formControl]="form.get('bio')">
     </div>
   </div>
 
