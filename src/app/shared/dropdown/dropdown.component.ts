@@ -1,5 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {DropdownValue} from '../models/dropdown';
+import {FormControl} from '@angular/forms';
 
 @Component({
   selector: 'jc-dropdown',
@@ -8,8 +9,7 @@ import {DropdownValue} from '../models/dropdown';
 })
 export class DropdownComponent implements OnInit {
 
-  @Input() value: string;
-  @Output() valueChange: EventEmitter<string> = new EventEmitter<string>();
+  @Input() ctrl: FormControl;
   @Input() label: string;
   @Input() id: string;
   @Input() options: DropdownValue[] = [];
@@ -18,9 +18,4 @@ export class DropdownComponent implements OnInit {
 
   ngOnInit() {
   }
-
-  onChange(): void {
-    this.valueChange.emit(this.value);
-  }
-
 }
