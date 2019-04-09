@@ -10,12 +10,25 @@ export class SignupFormService {
 
 
   constructor() {
+    const password = new FormControl('');
+    const matchingPassword = new FormControl('', matchingPasswordValidator(password));
+
+    const validator = matchingPasswordValidator(matchingPassword);
+    password.setValidators([validator, Validators.required, Validators.minLength(5)]);
+
     this._form = new FormGroup({
       'name': new FormControl('', [Validators.required]),
-      'password': new FormControl('', [Validators.required, Validators.minLength(5)]),
-      'matchingPassword': new FormControl(''),
+      'password': password,
+      'matchingPassword': matchingPassword,
+      'passwords': new FormGroup({
+        'password': new FormControl('', [Validators.required, Validators.minLength(5)]),
+        'matchingPassword': new FormControl('')
+      }, matchingPasswords),
       'bio': new FormControl(),
-    }, matchingPasswords);
+      'gender': new FormControl(),
+      'species': new FormControl(),
+      'fraction': new FormControl()
+    });
   }
 
 
@@ -24,10 +37,21 @@ export class SignupFormService {
   }
 }
 
+const matchingPasswordValidator = (ctl: FormControl) => {
+  return (ctl2: FormControl) => {
+    console.log('new validator');
+    if(ctl.value === ctl2.value) {
+      return null;
+    } else {
+      return {PASSWORDS_DONT_MATCH: 'passwords do not match'};
+    }
+};
+};
+
 const matchingPasswords: (grp: FormGroup) => ValidationErrors | null = (grp: FormGroup) => {
   if (grp.get('password').value === grp.get('matchingPassword').value) {
     return null;
   } else {
-    return {PASSWORDS_DONT_MATCH: '******'};
+    return {PASSWORDS_DONT_MATCH: 'passwords do not match'};
   }
 };

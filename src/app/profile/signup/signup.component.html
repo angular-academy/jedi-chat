@@ -14,11 +14,12 @@
     </div>
   </div>
 
+
   <div class="form-group">
     <label for="password">Password</label>
     <div class="container">
-      <input type="password" class="form-control" id="password" [formControl]="form.controls['password']">
-      <div class="alert alert-danger" *ngIf="form.get('password').invalid && form.get('password').touched">
+      <input type="password" class="form-control" id="password" [formControl]="form.get('password')">
+      <div class="alert alert-danger" *ngIf="form.get('passwords').get('password').invalid && form.get('passwords').get('password').touched">
         Password is required
       </div>
     </div>
@@ -29,7 +30,7 @@
     <div class="container">
       <input type="password" class="form-control" id="m-password" [formControl]="form.get('matchingPassword')">
       <div class="alert alert-danger" *ngIf="form.invalid">
-        {{form.errors?.blub || form.errors?.bla}}
+        {{form.get('passwords').errors?.PASSWORDS_DONT_MATCH || form.errors?.bla}}
       </div>
     </div>
   </div>
@@ -46,6 +47,7 @@
       [label]="'Gender'"
       [options]="GenderDropdownOptions"
       [id]="'gender'"
+      [ctrl]="form.get('gender')"
     >
 
     </jc-dropdown>
@@ -56,6 +58,7 @@
       [label]="'Species'"
       [options]="SpeciesDropdownOptions"
       [id]="'species'"
+      [ctrl]="form.get('species')"
     >
 
     </jc-dropdown>
@@ -66,6 +69,7 @@
       [label]="'Fraction'"
       [options]="FractionDropdownOptions"
       [id]="'fraction'"
+      [ctrl]="form.get('fraction')"
     >
 
     </jc-dropdown>

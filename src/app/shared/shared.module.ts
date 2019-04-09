@@ -2,7 +2,7 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {HeaderComponent} from './header/header.component';
 import {DropdownComponent} from './dropdown/dropdown.component';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {SpeciesPipe} from './pipes/species.pipe';
 import {FractionPipe} from './pipes/fraction.pipe';
 import {GenderPipe} from './pipes/gender.pipe';
@@ -12,7 +12,8 @@ import {GenderPipe} from './pipes/gender.pipe';
   exports: [HeaderComponent, DropdownComponent, SpeciesPipe, FractionPipe, GenderPipe],
   imports: [
     CommonModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
 })
 export class SharedModule {

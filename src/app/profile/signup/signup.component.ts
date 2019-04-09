@@ -34,6 +34,7 @@ export class SignupComponent implements OnInit {
   onSubmit() {
     //  TODO: do something here
     console.log('submit');
+    console.log(this.form.value);
   }
 
   onReset(event: Event): void {

@@ -2,7 +2,7 @@
 <div class="container radio-buttons" [id]="id">
 
   <label *ngFor="let opt of options" [for]="opt.value" class="radio-btn">
-    <input type="radio" [id]="opt.value" [name]="id" [value]="opt.value">
+    <input type="radio" [id]="opt.value" [name]="id" [value]="opt.value" [formControl]="ctrl">
     <span class="checked"></span>
     {{opt.viewValue}}
   </label>
