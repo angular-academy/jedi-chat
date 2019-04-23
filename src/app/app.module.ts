@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { registerLocaleData } from '@angular/common';
 import localeDe from '@angular/common/locales/de';
 import { CoreModule } from './core/core.module';
+import {AuthModule} from './auth/auth.module';
 
 registerLocaleData(localeDe, 'de');
 
@@ -17,7 +18,8 @@ registerLocaleData(localeDe, 'de');
   imports: [
     BrowserModule,
     CoreModule,
-    AppRoutingModule
+    AppRoutingModule,
+    AuthModule
   ],
   providers: [{provide: LOCALE_ID, useValue: 'de'}],
   bootstrap: [AppComponent]
