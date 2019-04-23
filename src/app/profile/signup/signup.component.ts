@@ -17,6 +17,8 @@ type Locations = { text: string, path: string }[];
 })
 export class SignupComponent implements OnInit {
 
+  private _avatar: string;
+
   public form: FormGroup;
   locations: Observable<Locations>;
   GenderDropdownOptions = GenderDropdownOptions;
@@ -43,7 +45,7 @@ export class SignupComponent implements OnInit {
   }
 
   async onFileUpload(event): Promise<void> {
-    const avatar: string = await fileUploadToBase64(event);
+    this._avatar = await fileUploadToBase64(event);
     console.log('profile pic was uploaded');
     //  TODO: do something with this
   }
