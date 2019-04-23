@@ -8,7 +8,6 @@ export class SignupFormService {
 
   private _form: FormGroup;
 
-
   constructor() {
     const password = new FormControl('');
     const matchingPassword = new FormControl('', matchingPasswordValidator(password));
@@ -37,10 +36,9 @@ export class SignupFormService {
   }
 }
 
-const matchingPasswordValidator = (ctl: FormControl) => {
-  return (ctl2: FormControl) => {
-    console.log('new validator');
-    if(ctl.value === ctl2.value) {
+const matchingPasswordValidator = (ctrl1: FormControl) => {
+  return (ctrl2: FormControl) => {
+    if (ctrl1.value === ctrl2.value) {
       return null;
     } else {
       return {PASSWORDS_DONT_MATCH: 'passwords do not match'};

@@ -19,7 +19,7 @@
     <label for="password">Password</label>
     <div class="container">
       <input type="password" class="form-control" id="password" [formControl]="form.get('password')">
-      <div class="alert alert-danger" *ngIf="form.get('passwords').get('password').invalid && form.get('passwords').get('password').touched">
+      <div class="alert alert-danger" *ngIf="form.get('password').invalid && form.get('password').touched">
         Password is required
       </div>
     </div>
@@ -29,8 +29,8 @@
     <label for="m-password">Matching Password</label>
     <div class="container">
       <input type="password" class="form-control" id="m-password" [formControl]="form.get('matchingPassword')">
-      <div class="alert alert-danger" *ngIf="form.invalid">
-        {{form.get('passwords').errors?.PASSWORDS_DONT_MATCH || form.errors?.bla}}
+      <div class="alert alert-danger" *ngIf="form.get('matchingPassword').invalid && form.get('matchingPassword').touched">
+        {{form.errors?.PASSWORDS_DONT_MATCH}}
       </div>
     </div>
   </div>
