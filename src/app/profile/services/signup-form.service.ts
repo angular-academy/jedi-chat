@@ -19,14 +19,11 @@ export class SignupFormService {
       'name': new FormControl('', [Validators.required]),
       'password': password,
       'matchingPassword': matchingPassword,
-      'passwords': new FormGroup({
-        'password': new FormControl('', [Validators.required, Validators.minLength(5)]),
-        'matchingPassword': new FormControl('')
-      }, matchingPasswords),
       'bio': new FormControl(),
       'gender': new FormControl(),
       'species': new FormControl(),
-      'fraction': new FormControl()
+      'fraction': new FormControl(),
+      'avatar': new FormControl()
     });
   }
 
